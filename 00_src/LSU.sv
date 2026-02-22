@@ -96,6 +96,9 @@ module dmem_dual_ip (
     output logic [31:0] q_b
 );
     logic [31:0] dmem [0:511];
+	initial begin
+		$readmemh("dmem_4b.hex", dmem, 0, 511); 
+	end
     // Ghi đồng bộ
     always_ff @(posedge clock) begin
             if (wren_a)
