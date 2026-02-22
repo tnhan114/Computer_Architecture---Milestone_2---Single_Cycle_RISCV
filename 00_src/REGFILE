@@ -1,3 +1,4 @@
+//fixed
 module mux32_1(
 	input logic [4:0] sel,//chan select
 	output logic [31:0] y, //ngo ra
