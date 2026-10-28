@@ -1,4 +1,4 @@
-module demux1_10(
+module decoder1_10(
 	input logic [31:0] i_lsu_addr,
 	output logic s_mem, //select mem
 	output logic s_rs1,
@@ -336,7 +336,7 @@ module lsu2(
    logic [6:0]  hex_reg [0:7];//output buffer
 	//giai ma dia chi
 	logic mem, r_ser1, led_red, led_green, seven_segment_3_0, seven_segment_7_4, lcd, r_ser2, switch, r_ser3;
-	demux1_10 giai_ma_addr(.i_lsu_addr(i_lsu_addr), .s_mem(mem), .s_rs1(r_ser1), .s_led_r(led_red), .s_led_g(led_green),
+	decoder1_10 decoder_addr(.i_lsu_addr(i_lsu_addr), .s_mem(mem), .s_rs1(r_ser1), .s_led_r(led_red), .s_led_g(led_green),
 									.s_svsm_3_0(seven_segment_3_0), .s_svsm_7_4(seven_segment_7_4), .s_lcd(lcd), .s_rs2(r_ser2),
 									.s_switch(switch), .s_rs3(r_ser3));
 	//dmem
