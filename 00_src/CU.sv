@@ -178,6 +178,7 @@ module ControlUnit (
 					default: begin
 								insn_vld = 0;
 								rd_wren  = 0;
+								mem_wren = 0;
 								end
 					endcase
 					end
