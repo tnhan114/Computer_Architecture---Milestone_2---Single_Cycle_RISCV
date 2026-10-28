@@ -37,7 +37,7 @@ module ControlUnit (
 	always_comb begin
 					pc_sel   = 0;
 					rd_wren  = 0;
-					insn_vld = 1;
+					insn_vld = 0;
 					br_un    = 0;
 					opa_sel  = 0;
 					opb_sel  = 0;
@@ -50,6 +50,7 @@ module ControlUnit (
 
 // R-format (add, sub, and, or, xor, sll, srl, sra, slt, sltu)
 				7'b0110011: begin
+								insn_vld = 1;
 								pc_sel   = 0; rd_wren = 1;
 								opa_sel  = 0; opb_sel = 0;
 								mem_wren = 0; wb_sel  = 2'b01;
@@ -69,6 +70,7 @@ module ControlUnit (
 
 // I-format layout (addi, andi, ori, xori, slti, sltiu, slli, srli, srai)
 				7'b0010011: begin
+								insn_vld = 1;
 								pc_sel   = 0; rd_wren = 1;
 								opa_sel  = 0; opb_sel = 1;
 								mem_wren = 0; wb_sel  = 2'b01;
@@ -87,6 +89,7 @@ module ControlUnit (
 
 // I- format: Load (lb, lh, lw, lbu, lhu)
 					7'b0000011: begin
+									insn_vld = 1;
 									pc_sel   = 0; rd_wren = 1;
 									opa_sel  = 0; opb_sel = 1;
 									mem_wren = 0; wb_sel = 2'b10; 
@@ -103,6 +106,7 @@ module ControlUnit (
 
 // S - format: Store (sb, sh, sw)
 					7'b0100011: begin
+									insn_vld = 1;
 									pc_sel   = 0; rd_wren = 0;
 									opa_sel  = 0; opb_sel = 1;
 									mem_wren = 1; wb_sel = 2'b11; 
@@ -117,6 +121,7 @@ module ControlUnit (
 
 // B - format (beq, bne, blt, bge, bltu, bgeu)
 					7'b1100011: begin
+									insn_vld = 1;
 									rd_wren = 0;
 									opa_sel  = 1; opb_sel = 1;
 									mem_wren = 0; wb_sel = 2'b11; 
@@ -135,6 +140,7 @@ module ControlUnit (
 
 // J - format (jal)
 					7'b1101111: begin
+									insn_vld = 1;
 									pc_sel   = 1; rd_wren = 1;
 									opa_sel  = 1; opb_sel = 1;
 									mem_wren = 0; wb_sel  = 2'b00; 
@@ -143,6 +149,7 @@ module ControlUnit (
 
 // U - format (lui)
 					7'b0110111: begin
+									insn_vld = 1;
 									pc_sel   = 0; rd_wren = 1;
 									opa_sel  = 0; opb_sel = 1;
 									mem_wren = 0; wb_sel  = 2'b01; 
@@ -151,6 +158,7 @@ module ControlUnit (
 
 // U - format (auipc)
 					7'b0010111: begin
+									insn_vld = 1;
 									pc_sel   = 0; rd_wren = 1;
 									opa_sel  = 1; opb_sel = 1;
 									mem_wren = 0; wb_sel  = 2'b01; 
@@ -159,6 +167,7 @@ module ControlUnit (
 
 // jalr
 					7'b1100111: begin
+									insn_vld = 1;
 									pc_sel   = 1; rd_wren = 1;
 									opa_sel  = 0; opb_sel = 1;
 									mem_wren = 0; wb_sel  = 2'b00; 
