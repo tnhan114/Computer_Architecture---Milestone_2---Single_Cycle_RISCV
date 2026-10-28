@@ -23,6 +23,7 @@ module imm_gen(
 								S_type: begin
 										  o_imm[4:0] = i_inst[11:7];
 										  o_imm[10:5] = i_inst[30:25];
+										  o_imm[11] = i_inst[31];
 										  o_imm[31:12] = {20{i_inst[31]}};
 										  end
 								B_type: begin
